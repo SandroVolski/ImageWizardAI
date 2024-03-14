@@ -1,0 +1,7 @@
+{
+  "name": "imagewizard",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
