@@ -1,0 +1,49 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  .logo {
+    height: auto;
+    width: 220px;
+    margin-bottom: -20px;
+    margin-top: 30px;
+    margin-left: 100px;
+  }
+
+  ion-item {
+    margin-bottom: 10px;
+  }
+
+  .forgot-password {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .register-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007aff;
+  }
+
+  .welcome-message {
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  .input-container {
+    width: 300px;
+    border-radius: 10px;
+    border-color: black;
+    height: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+
+    ion-item {
+      margin-bottom: 10px;
+    }
+  }
+}

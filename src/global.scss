@@ -24,3 +24,21 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'CodecPro'; // Nome da fonte aqui
+    src: url('./assets/fonts/CodecPro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CodecProExtraBold'; // Nome da fonte aqui
+    src: url('./assets/fonts/CodecProExtraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'CodecProExtraBold', sans-serif; // Mesmo nome da fonte aqui
+}

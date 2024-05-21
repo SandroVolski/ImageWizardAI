@@ -1,0 +1,20 @@
+ion-header,
+ion-toolbar,
+ion-content {
+  --background: #101728 !important; 
+  --ion-background-color: #101728 !important; 
+  --ion-color-base: #101728 !important; 
+  color: #ffffff; 
+}
+
+ion-header ion-toolbar {
+    min-height: 70px; 
+    --ion-toolbar-background: #101728 !important; 
+    --ion-toolbar-color: #ffffff; 
+  
+    ion-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }

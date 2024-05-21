@@ -1,0 +1,141 @@
+ion-header,
+ion-toolbar,
+ion-content {
+  --background: #101728 !important; 
+  --ion-background-color: #101728 !important; 
+  --ion-color-base: #101728 !important; 
+  color: #ffffff; 
+}
+
+//MENU
+ion-menu::ng-deep ion-content {
+  --background: #3A5492 !important; /* Força a cor de fundo para o conteúdo do menu */
+}
+
+ion-menu {
+  --ion-background-color: #3A5492 !important; /* Cor de fundo do menu */
+}
+
+ion-content {
+  background-color: #3A5492 !important; /* Aplica a cor diretamente e usa !important para sobrescrever estilos conflitantes */
+}
+
+.menu-header {
+  font-family: 'CodecProExtraBold', sans-serif;
+  text-align: left;
+  padding: 20px;
+  border-bottom: 4px solid #ffffff; /* Linha divisória opcional */
+  color: #ffffff;
+  
+  h2{
+    font-weight: bold; 
+    margin-left: 80px;
+    margin-top: -60px;
+    font-size: 23px;
+  }
+  p{
+    font-family: 'CodecPro', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-weight: normal !important; 
+  }
+}
+
+.menu-rodape {
+  color: #ffffff;
+  font-size: 25px; /* Ajusta conforme necessário */
+  
+  ion-icon {
+    color: #ffffff;
+    font-size: 35px; /* Tamanho do ícone */
+    margin-left: 10px; /* Espaço entre o ícone e o texto */
+    margin-top: 10px;
+  }
+  ion-select {
+    font-family: 'CodecPro', sans-serif;
+    font-weight: normal;
+    margin-left: 55px; /* Espaço entre o label e o select */
+    margin-top: -43px;
+    font-size: 25px;
+  }
+  
+}
+
+.seta {
+  color: #ffffff !important;
+  left: 15px;
+  height: 35px;
+  font-weight: bold; 
+}
+
+.toggle-container {
+  font-family: 'CodecPro', sans-serif;
+  font-weight: normal;
+  font-size: 25px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre os ícones e o toggle */
+
+
+  ion-icon {
+    font-size: 35px; /* Ajuste conforme necessário */
+    color: #ffffff; /* Cor do ícone */
+    margin-top: -5px;
+  }
+}
+
+ion-toggle {
+  --handle-background: #ffffff; /* Cor do manipulador do toggle */
+  --background-checked: #10172 !important; /* Cor do fundo quando ativado */
+  --background: #cccccc; /* Cor do fundo quando desativado */
+}
+
+.profile-picture {
+  color:#FFFFFF !important;
+  align-items: left;
+  width: 80px;
+  height: 70px;
+  border-radius: 50%;
+  margin-top: -5px;
+  margin-left: -10px;
+}
+
+.user-info{
+  font-weight: bold; 
+}
+
+ion-list {
+  --ion-background-color: #3A5492 !important;
+  margin-top: 20px;
+}
+
+ion-item {
+  --background: transparent; /* Remove qualquer fundo padrão */
+  --color: #ffffff; /* Cor do texto dos itens */
+  --padding-start: 0; /* Alinha texto à esquerda */
+  --inner-padding-end: 0; /* Alinha ícones à esquerda */
+  --ion-item-icon-color: #ffffff; /* Cor dos ícones */
+  margin-left: 12px;
+}
+
+ion-label {
+  font-family: 'CodecProExtraBold', sans-serif;
+  font-size: 30px !important;
+  margin-top: 20px;
+  margin-left: 10px; /* Espaço entre ícone e texto */
+}
+
+ion-header ion-toolbar {
+  min-height: 70px; 
+  --ion-toolbar-background: #101728 !important; 
+  --ion-toolbar-color: #ffffff; 
+
+  ion-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
