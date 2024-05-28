@@ -283,7 +283,7 @@ ion-content {
     .image-comparison-container {
       position: relative;
       width: 100%; // Ajuste a largura conforme necessário
-      overflow: hidden;
+      
     
       img {
         position: absolute;
@@ -297,9 +297,9 @@ ion-content {
         position: absolute;
         top: 0;
         left: 0;
-        width: 50%; // Mostra 50% da imagem de cima inicialmente
+        width: 100%; // Mostra 50% da imagem de cima inicialmente
         height: 100%;
-        overflow: hidden;
+        
     
         .image-top {
           position: absolute;

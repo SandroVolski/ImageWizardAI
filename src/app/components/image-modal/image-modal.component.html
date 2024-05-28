@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Visualizar Imagem</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="imgSrc" alt="Imagem selecionada" class="full-image">
+  <ion-button expand="full" (click)="downloadImage(imgSrc)">Baixar Imagem</ion-button>
+</ion-content>

@@ -1,4 +1,43 @@
-<app-menu></app-menu>
+<ion-menu contentId="main-content" side="start" type="overlay">
+  <ion-content>
+    <div class="menu-header">
+      <ion-icon name="person-circle-outline" class="profile-picture"></ion-icon>
+      <div class="user-info">
+        <h2>Sandro Eduardo Prado Volski</h2>
+        <p>sandroeduvolski&#64;gmail.com</p>
+      </div>
+    </div>
+    <ion-list lines="none">
+      <ion-item button (click)="navigateTo('/gallery')">
+        <ion-label>Ir para Galeria</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+      <ion-item button>
+        <ion-label>Como Funciona</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+      <ion-item button>
+        <ion-label>Perfil</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <div class="menu-header" style="margin-top: 400px;"></div>
+    <div class="menu-rodape">
+      <ion-icon name="globe-outline" slot="start"></ion-icon>
+      <ion-select interface="popover" placeholder="Selecione o Idioma" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
+        <ion-select-option value="Português do Brasil">Português do Brasil</ion-select-option>
+        <ion-select-option value="English (US)">English (US)</ion-select-option>
+        <ion-select-option value="Español (España)">Español (España)</ion-select-option>
+      </ion-select>
+
+      <div class="toggle-container">
+        <ion-icon name="{{ darkModeEnabled ? 'moon' : 'sunny' }}"></ion-icon>
+        <span>{{ darkModeEnabled ? 'Modo Noturno' : 'Modo Claro' }}</span>
+        <ion-toggle [(ngModel)]="darkModeEnabled" (ionChange)="toggleDarkMode()"></ion-toggle>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
 
 <div class="ion-page" id="main-content">
   <ion-header >

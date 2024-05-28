@@ -11,6 +11,12 @@ export class HomePage implements AfterViewInit {
   @ViewChild('sliderContainer') sliderContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('imageTop') imageTop!: ElementRef<HTMLImageElement>;
   public darkModeEnabled = true;
+  sliderActive = false;
+  sliderPosition = 0;
+  
+  userName = 'Sandro Eduardo Prado Volski';
+  userEmail = 'sandroeduvolski@gmail.com';
+
   constructor(private router: Router) {
     document.body.classList.add('dark-mode');
   }
@@ -20,72 +26,52 @@ export class HomePage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.slider.nativeElement);
-    console.log(this.imageTop.nativeElement);
-    console.log(this.sliderContainer.nativeElement);
     this.setupSlider();
   }
 
+  toggleSliderVisibility() {
+    this.sliderActive = !this.sliderActive;
+    this.sliderPosition = this.sliderContainer.nativeElement.offsetWidth;
+  }
+
   setupSlider() {
-    console.log("Setting up slider...");
-    
     const slider = this.slider.nativeElement;
-    const imageTop = this.imageTop.nativeElement;
     const sliderContainer = this.sliderContainer.nativeElement;
 
-    console.log("Slider:", slider);
-    console.log("Image Top:", imageTop);
-    console.log("Slider Container:", sliderContainer);
-
-    // Event listeners for mouse actions
+    // Event listeners for mouse and touch actions
     slider.addEventListener('mousedown', (event: MouseEvent) => {
-      const startX = event.clientX;
-      const startWidth = imageTop.clientWidth;
-
-      const onMouseMove = (event: MouseEvent) => {
-        const currentX = event.clientX;
-        const newWidth = startWidth + (currentX - startX);
-        console.log("New Width:", newWidth)
-        if (newWidth >= 0 && newWidth <= sliderContainer.clientWidth) {
-          slider.style.left = `${newWidth}px`;
-          imageTop.style.width = `${newWidth}px`;
-        }
-      };
-
-      const onMouseUp = () => {
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-      };
-
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+      event.preventDefault();
+      this.startDragging(event.clientX);
     });
 
-    // Add touch event listeners similar to mouse events if necessary
     slider.addEventListener('touchstart', (event: TouchEvent) => {
+      event.preventDefault();
       const touch = event.touches[0];
-      const startX = touch.clientX;
-      const startWidth = imageTop.clientWidth;
-
-      const onTouchMove = (event: TouchEvent) => {
-        const touch = event.touches[0];
-        const currentX = touch.clientX;
-        const newWidth = startWidth + (currentX - startX);
-        if (newWidth >= 0 && newWidth <= sliderContainer.clientWidth) {
-          slider.style.left = `${newWidth}px`;
-          imageTop.style.width = `${newWidth}px`;
-        }
-        event.preventDefault(); // Prevent scrolling when touching
-      };
-
-      const onTouchEnd = () => {
-        document.removeEventListener('touchmove', onTouchMove);
-        document.removeEventListener('touchend', onTouchEnd);
-      };
-
-      document.addEventListener('touchmove', onTouchMove, { passive: false });
-      document.addEventListener('touchend', onTouchEnd);
+      this.startDragging(touch.clientX);
     });
+  }
+
+  startDragging(startX: number) {
+    const onMouseMove = (event: MouseEvent) => {
+      const currentX = event.clientX;
+      this.updateSliderPosition(currentX - startX);
+    };
+
+    const onMouseUp = () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }
+
+  updateSliderPosition(deltaX: number) {
+    this.sliderPosition += deltaX;
+    if (this.sliderPosition < 0) this.sliderPosition = 0;
+    if (this.sliderPosition > this.sliderContainer.nativeElement.offsetWidth) {
+      this.sliderPosition = this.sliderContainer.nativeElement.offsetWidth;
+    }
   }
 
   public selectedLanguage: string = "Português do Brasil";

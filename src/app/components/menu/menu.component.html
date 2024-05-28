@@ -39,18 +39,85 @@
   </ion-content>
 </ion-menu>
 
-<ion-header>
-  <ion-toolbar color="dark">
-    <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false" style="height: 80px; margin-left: 20px; font-size: 50px;"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      <img src="./assets/imgs/logoCerta.png" alt="Logo" style="height: 120px; margin-top: 30px;">
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon name="person-circle-outline" slot="icon-only" style="height: 80px; margin-right: 20px; font-size: 45px;"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page" id="main-content">
+  <ion-header >
+    <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false" style="height: 80px; margin-left: 20px; font-size: 50px;"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        <img src="./assets/imgs/logoCerta.png" alt="Logo" style="height: 120px; margin-top: 30px;">
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="person-circle-outline" slot="icon-only" style="height: 80px; margin-right: 20px; font-size: 45px;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content style="--background: #101728;" >
+    <!-- Título -->
+    <h1>Melhore suas Imagens</h1>
+    <p>100% automático e de <span class="highlight">graça</span></p>
+
+    <!-- Inserir Imagem -->
+    <div class="upload-container">
+      <div class="upload-area">
+        <div class="icon-background"></div> 
+        <ion-icon name="image-outline" class="custom-icon"></ion-icon>
+        <p class="instrucoes">Clique, cole ou solte os arquivos aqui para começar</p>
+      </div>
+    </div>
+    <div class="button-class"> 
+      <div class="square-background"></div>
+      <button class="restore-button">Restaurar Imagem</button>
+    </div>
+
+    <!-- Teste Sobreposição-->
+    <p class="test">TESTE UM EXEMPLO</p>
+    <div class="image-comparison-container">
+      <img src="./assets/imgs/imagem_antes.png" class="image-cover">
+      <div class="slider-container" #sliderContainer>
+        <img src="./assets/imgs/imagem_depois.png" #imageTop class="image-top" style="z-index: 1000;">
+        <div class="slider" #slider></div>
+      </div>
+    </div>
+    
+
+    <p class="test" style="margin-left: 5px; margin-right: 5px;">A <span style="color: #9340FF;">ImageWizardIA</span> é uma ferramenta que busca aprimorar fotos de rostos.</p>
+    <p class="text">Nosso website é construído para criar e aumentar o leque de possibilidades da utilização de ferramentas de Inteligência Artificial na vida das pessoas, utilizando uma técnica inovadora de Redes Neurais Artificiais, mais precisamente as GANS.</p>
+
+    <div class="rodape-decorativo">
+      <img src="./assets/imgs/imagem_abstrata.png">
+    </div>
+    <div class="linha">
+      <img src="./assets/imgs/linha_abstrata.png">
+    </div>
+
+    <div></div>
+
+      <div class="footer-container">
+          <img src="./assets/imgs/logo_nome_rodape.png" alt="Logo" width="400" style="margin-left: 15px;">
+          <p class="faleConosco">Fale conosco</p>
+          <p class="info1">(42) 99800-5326</p>
+          <p class="info3">Rua Rodolfo Schulmberger, 26, Irati-PR, Brasil</p>
+          <p class="info4" >contato&#64;imagewizard.com.br</p>
+          <div style="margin: 20px;"></div>
+          <div class="legal-links">
+              <p class="info2">Termos de Serviço</p>
+              <p class="info5" href="#">Termos e Condições Gerais</p>
+              <p class="info6" href="#">Política de Privacidade</p>
+              <p class="info7" href="#">Política de cookies</p>
+              <p class="info8" href="#">Nota Legal</p>
+          </div>
+          <div class="social-media-container">
+            <ion-icon name="logo-instagram" class="social-media"></ion-icon>
+            <ion-icon name="logo-facebook" class="social-media"></ion-icon>
+            <ion-icon name="logo-linkedin" class="social-media"></ion-icon>
+          </div>
+      </div>
+
+      <div></div>
+  </ion-content>
+</div>

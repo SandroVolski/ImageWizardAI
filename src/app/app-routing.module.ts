@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'gallery',
     loadChildren: () => import('./view/pages/gallery/gallery.module').then( m => m.GalleryPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./view/pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
 ];
 
 @NgModule({

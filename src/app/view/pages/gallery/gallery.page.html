@@ -1,13 +1,109 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>gallery</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="main-content" side="start" type="overlay">
+  <ion-content>
+    <div class="menu-header">
+      <ion-icon name="person-circle-outline" class="profile-picture"></ion-icon>
+      <div class="user-info">
+        <h2>Sandro Eduardo Prado Volski</h2>
+        <p>sandroeduvolski&#64;gmail.com</p>
+      </div>
+    </div>
+    <ion-list lines="none">
+      <ion-item button (click)="navigateTo('/gallery')">
+        <ion-label>Ir para Galeria</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+      <ion-item button>
+        <ion-label>Como Funciona</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+      <ion-item button>
+        <ion-label>Perfil</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <div class="menu-header" style="margin-top: 400px;"></div>
+    <div class="menu-rodape">
+      <ion-icon name="globe-outline" slot="start"></ion-icon>
+      <ion-select interface="popover" placeholder="Selecione o Idioma" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
+        <ion-select-option value="Português do Brasil">Português do Brasil</ion-select-option>
+        <ion-select-option value="English (US)">English (US)</ion-select-option>
+        <ion-select-option value="Español (España)">Español (España)</ion-select-option>
+      </ion-select>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">gallery</ion-title>
+      <div class="toggle-container">
+        <ion-icon name="{{ darkModeEnabled ? 'moon' : 'sunny' }}"></ion-icon>
+        <span>{{ darkModeEnabled ? 'Modo Noturno' : 'Modo Claro' }}</span>
+        <ion-toggle [(ngModel)]="darkModeEnabled" (ionChange)="toggleDarkMode()"></ion-toggle>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header >
+    <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false" style="height: 80px; margin-left: 20px; font-size: 50px;"></ion-menu-button>
+      </ion-buttons>
+      <ion-title (click)="navigateTo('/home')">
+        <img src="./assets/imgs/logoCerta.png" alt="Logo" style="height: 120px; margin-top: 30px;">
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="person-circle-outline" slot="icon-only" style="height: 80px; margin-right: 20px; font-size: 45px;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+
+  <ion-content style="--background: #101728;" class="gallery-section">
+    <h1>Galeria</h1>
+
+    <p>Imagens Melhoradas</p>
+    <div class="images-container">
+      <div *ngFor="let image of enhancedImages; let i = index" class="image-box">
+        <img *ngIf="i < enhancedLimit" [src]="image.src" alt="Imagem melhorada">
+        <div *ngIf="i === 5 && showDotse" class="dots" (click)="showMoreEnhancedImages()">•••</div>
+      </div>
+    </div>
+
+    <p>Imagens Carregadas</p>
+    <div class="images-container">
+      <div *ngFor="let image of uploadedImages; let i = index" class="image-box">
+        <img *ngIf="i < uploadedLimit" [src]="image.src" alt="Imagem melhorada">
+        <div *ngIf="i === 2 && showDotsu" class="dots" (click)="showMoreUploadedImages()">•••</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;"></div>
+
+    <div class="linha">
+      <img src="./assets/imgs/linha_abstrata.png">
+    </div>
+
+    <div></div>
+
+      <div class="footer-container">
+          <img src="./assets/imgs/logo_nome_rodape.png" alt="Logo" width="400" style="margin-left: 15px;">
+          <p class="faleConosco">Fale conosco</p>
+          <p class="info1">(42) 99800-5326</p>
+          <p class="info3">Rua Rodolfo Schulmberger, 26, Irati-PR, Brasil</p>
+          <p class="info4" >contato&#64;imagewizard.com.br</p>
+          <div style="margin: 20px;"></div>
+          <div class="legal-links">
+              <p class="info2">Termos de Serviço</p>
+              <p class="info5" href="#">Termos e Condições Gerais</p>
+              <p class="info6" href="#">Política de Privacidade</p>
+              <p class="info7" href="#">Política de cookies</p>
+              <p class="info8" href="#">Nota Legal</p>
+          </div>
+          <div class="social-media-container">
+            <ion-icon name="logo-instagram" class="social-media"></ion-icon>
+            <ion-icon name="logo-facebook" class="social-media"></ion-icon>
+            <ion-icon name="logo-linkedin" class="social-media"></ion-icon>
+          </div>
+      </div>
+
+      <div></div>
+
+  </ion-content>
