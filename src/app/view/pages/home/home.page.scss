@@ -441,7 +441,7 @@ ion-content {
       .social-media-container {
         position: absolute; /* Mantém o posicionamento absoluto */
         right: 40px; /* Alinha ao lado direito com 20px de margem do lado direito */
-        top: 1510px; /* Alinha verticalmente ao centro do footer */
+        top: 1820px; /* Alinha verticalmente ao centro do footer */
         transform: translateY(-50%); /* Ajusta precisamente ao centro */
         display: flex;
         flex-direction: column;
@@ -469,5 +469,71 @@ ion-content {
         margin-top: 20px;
     }
 
+    .comparador {
+      display: flex;
+      width: 100%;
+      height: 400px;
+    }
+    
+    .antes, .depois {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .antes img, .depois img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .linha-divisa {
+      width: 2px;
+      height: 100%;
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+    .before-after-container {
+      margin-top: 25px;
+      width: 500px; /* Largura da imagem */
+      height: auto; /* Para manter a proporção */
+      overflow: hidden;
+    }
+    
+    .before-image, .after-image {
+      margin-left: 68px;
+      width: 60%;
+      height: 60%;
+    }
+    
+    .after-image {
+      width: 50%; /* Iniciar no meio */
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .slider {
+      position:absolute;
+      left: 50%; /* Inicia ao centro */
+      height: 35%;
+      width: 2px; /* Espessura da linha */
+      background-color: white;
+      cursor: ew-resize;
+      margin-top: 690px;
+    }
+
   }
+
   

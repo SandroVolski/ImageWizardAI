@@ -12,11 +12,11 @@
         <ion-label>Ir para Galeria</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
-      <ion-item button>
+      <ion-item button (click)="navigateTo('/function')">
         <ion-label>Como Funciona</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
-      <ion-item button>
+      <ion-item button (click)="navigateTo('/perfil')">
         <ion-label>Perfil</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
@@ -91,6 +91,7 @@
         </ion-item>
       </div>
     </div>
+
     <div style="margin-bottom: 30px !important;"></div>
     <div class="settings-container">
       <h2>Pré Definições</h2>
@@ -98,12 +99,10 @@
         <p>Idioma</p>
         <ion-radio-group [(ngModel)]="selectedLanguage">
           <ion-item lines="none">
-            <ion-label>Português/Brasil</ion-label>
-            <ion-radio slot="start" value="pt-BR"></ion-radio>
+            <ion-radio slot="start" value="pt-BR" aria-label="Português/Brasil">Português/Brasil</ion-radio>
           </ion-item>
           <ion-item lines="none">
-            <ion-label>Inglês</ion-label>
-            <ion-radio slot="start" value="en"></ion-radio>
+            <ion-radio slot="start" value="en" aria-label="Inglês">Inglês</ion-radio>
           </ion-item>
         </ion-radio-group>
       </div>
@@ -111,17 +110,15 @@
         <p>Tema</p>
         <ion-radio-group [(ngModel)]="selectedTheme">
           <ion-item lines="none">
-            <ion-label>Noite</ion-label>
-            <ion-radio slot="start" value="dark"></ion-radio>
+            <ion-radio slot="start" value="dark" aria-label="Noite">Noite</ion-radio>
           </ion-item>
           <ion-item lines="none">
-            <ion-label>Dia</ion-label>
-            <ion-radio slot="start" value="light"></ion-radio>
+            <ion-radio slot="start" value="light" aria-label="Dia">Dia</ion-radio>
           </ion-item>
         </ion-radio-group>
       </div>
     </div>
-
+    
     <div class="button-group">
       <ion-button class="salvar" expand="block" (click)="saveSettings()">Salvar</ion-button>
       <ion-button expand="block" color="danger" (click)="logout()">Deslogar</ion-button>
