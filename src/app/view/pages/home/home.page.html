@@ -1,6 +1,6 @@
 <ion-menu contentId="main-content" side="start" type="overlay">
   <ion-content>
-    <div class="menu-header">
+    <div class="menu-header" (click)="navigateTo('/perfil')">
       <ion-icon name="person-circle-outline" class="profile-picture"></ion-icon>
       <div class="user-info">
         <h2>Sandro Eduardo Prado Volski</h2>
@@ -12,11 +12,11 @@
         <ion-label>Ir para Galeria</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
-      <ion-item button>
+      <ion-item button (click)="navigateTo('/function')">
         <ion-label>Como Funciona</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
-      <ion-item button>
+      <ion-item button (click)="navigateTo('/perfil')">
         <ion-label>Perfil</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
@@ -49,7 +49,7 @@
         <img src="./assets/imgs/logoCerta.png" alt="Logo" style="height: 120px; margin-top: 30px;">
       </ion-title>
       <ion-buttons slot="end">
-        <ion-button>
+        <ion-button (click)="navigateTo('/perfil')">
           <ion-icon name="person-circle-outline" slot="icon-only" style="height: 80px; margin-right: 20px; font-size: 45px;"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -74,20 +74,24 @@
       <button class="restore-button">Restaurar Imagem</button>
     </div>
 
-    <!-- Teste Sobreposição-->
+    <!-- Teste Sobreposição 
     <p class="test">TESTE UM EXEMPLO</p>
-    <div class="image-comparison-container">
-      <img src="./assets/imgs/imagem_antes.png" class="image-cover">
-      <div class="slider-container" #sliderContainer>
-        <img src="./assets/imgs/imagem_depois.png" #imageTop class="image-top" style="z-index: 1000;">
-        <div class="slider" #slider></div>
+    <div class="image-comparison-container" >
+      <img src="./assets/imgs/imagem_antes.png" class="image-before">
+      <div class="slider-container" id="sliderContainer">
+        <img src="./assets/imgs/imagem_depois.png" class="image-after">
+        <div class="slider" id="slider"></div>
       </div>
-    </div>
+    </div>-->
     
 
-    <p class="test" style="margin-left: 5px; margin-right: 5px;">A <span style="color: #9340FF;">ImageWizardIA</span> é uma ferramenta que busca aprimorar fotos de rostos.</p>
-    <p class="text">Nosso website é construído para criar e aumentar o leque de possibilidades da utilização de ferramentas de Inteligência Artificial na vida das pessoas, utilizando uma técnica inovadora de Redes Neurais Artificiais, mais precisamente as GANS.</p>
-
+    <p class="test" style="margin-left: 5px; margin-right: 5px;">
+      A <span style="color: #9340FF;">ImageWizardIA</span> é uma ferramenta que busca aprimorar fotos de rostos.
+    </p>
+    <p class="text">
+        Nosso website é construído para criar e aumentar o leque de possibilidades da utilização de ferramentas de Inteligência Artificial na vida das pessoas, utilizando uma técnica inovadora de Redes Neurais Artificiais, mais precisamente as GANS.
+    </p>
+    
     <div class="rodape-decorativo">
       <img src="./assets/imgs/imagem_abstrata.png">
     </div>

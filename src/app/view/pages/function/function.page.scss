@@ -128,216 +128,63 @@ ion-label {
   margin-left: 10px; /* Espaço entre ícone e texto */
 }
 
-
-
-
-
-
-
-
-
-
-
-ion-header ion-toolbar {
-  min-height: 70px; 
-  --ion-toolbar-background: #101728 !important; 
-  --ion-toolbar-color: #ffffff; 
-
-  ion-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 ion-content {
-    --background: #101728;
+    background: #101728; // Ajuste conforme a cor de fundo desejada
   
-    h1, p {
-      color: #ffffff; 
-      text-align: center; 
-      font-family: 'CodecProExtraBold', sans-serif;
-    }
+    .info-section {
+      text-align: center;
+      color: #ffffff;
   
-    h1 {
-      font-size: 45px;
-      font-weight: bold; 
-      margin-top: 50px; 
-    }
-  
-    p {
-      margin-top: 24px;
-      font-weight: bold; 
-      font-size: 20px;
-    }
-    .highlight {
-        color: #FF3C5F;
-    }
-
-    .upload-container {
-        background: transparent; // Cor de fundo sólida
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 70px; // Espaço ao redor do quadrado para efeito de sombra
-        position: relative;
-        border-radius: 15px; // Cantos arredondados se desejar
-      
-        &:before {
-          content: "";
-          position: absolute;
-          top: -40px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(circle, 
-            rgba(31, 65, 187, 0.8) 40%, 
-            transparent 60%);
-          border-radius: 5px;
-        }
-      }
-      
-      .upload-area {
-        background: #3F5A9D; // Cor de fundo sólida para o quadrado
-        border: 2px dashed #ffffff; // Borda pontilhada branca
-        border-radius: 10px; // Cantos arredondados
-        color: #ffffff; // Cor do texto
-        text-align: center; // Centraliza o texto
-        padding: 75px; // Espaçamento interno
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative; // Isso assegura que o conteúdo fique acima do gradiente
-        z-index: 1; // Isso assegura que o conteúdo fique acima do gradiente
-        margin-top: -40px;;
-      }
-      
-      .instrucoes {
-        font-size: 16px; // Reduzindo o tamanho da fonte especificamente para este parágrafo
-        margin-bottom: 15px;
-        margin-left: -50px; // Ajuste conforme necessário para o espaçamento
-        margin-right: -50px;
-      }
-
-      .icon-background {
-        width: 70px; // Tamanho do círculo
-        height: 70px; // Tamanho do círculo
-        background-color: white; // Cor do círculo
-        border-radius: 50%; // Torna o elemento circular
-        position: absolute; // Posiciona absolutamente dentro da .upload-area
-        margin-bottom: 68px;
-        z-index: 0; // Garante que fique atrás do ícone
-      }
-  
-      ion-icon {
-        z-index: 1; // Garante que o ícone fique na frente do círculo
-        color: #3F5A9D; // Cor do ícone
-        font-size: 48px; // Tamanho do ícone
-        position: relative; // Assegura o alinhamento correto
-    }
-
-    .restore-button {
-        font-family: 'CodecProExtraBold', sans-serif;
-        background: linear-gradient(to right, #FF3C5F, #FF3C5F, #FFFFFF);
-        border: none; 
-        color: #000000; 
-        padding: 15px 73px;
-        font-size: 16px; /* Tamanho do texto */
-        border-radius: 12px; /* Bordas arredondadas */
-        cursor: pointer; /* Cursor de clique */
-        outline: none; 
-        z-index: 1;
-      }
-    .button-class {
-        margin-top: -50px;
-        display: flex; /* Usa flexbox */
-        flex-direction: column; /* Organiza os filhos verticalmente */
-        align-items: center; /* Alinha os filhos ao centro horizontalmente */
-        justify-content: center; /* Alinha os filhos ao centro verticalmente */
-    }
-    .square-background {
-        background-color: white; // Cor do círculo
-        padding: 35px 145px; // Espaçamento interno
-        margin-top: -50px;
-        opacity: 35%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute; // Isso assegura que o conteúdo fique acima do gradiente
-        z-index: 0; // Isso assegura que o conteúdo fique acima do gradiente
-    }
-    
-    .test{
-        color: #ffffff;
+      h1 , p{
         text-align: center; 
         font-family: 'CodecProExtraBold', sans-serif;
-        margin-top: 55px;
-        font-weight: bold; 
-        font-size: 27px;
-    }
-
-    //TESTE
-    .image-comparison-container {
-      position: relative;
-      width: 100%; /* Ajuste conforme necessário */
-      height: auto; /* Ajuste conforme necessário */
-      overflow: hidden;
-    }
-    
-    .image-before, .image-after {
-      margin-left:100px;
-      height: 200px; 
-      width: 200px;
-    }
-    
-    .slider-container {
-      
-      top: 0;
-      left: 50%; /* Começa no meio */
-      width: 50%; /* Mostra metade da imagem após inicialmente */
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    .image-after {
-      display: block; /* Garante que a imagem esteja visível */
-    }
-    
-    .slider {
-      position: absolute;
-      left: -5px; /* Ajuste conforme a espessura da barra */
-      top: 0;
-      width: 10px; /* Largura da barra deslizante */
-      height: 100%;
-      background-color: white; /* Cor da barra deslizante */
-      cursor: ew-resize;
-      z-index: 2;
-    }
-    
-      
-      .text{
-        color: #ffffff;
-        text-align: justify; 
-        font-family: 'CodecPro', sans-serif;
-        
-        font-size: 20px;
-        margin-left: 40px; 
-        margin-right: 40px;
-        line-height: 25px;
       }
-
-
-      //Rodapé
-      .rodape-decorativo {
-        width: 100%;
-        height: 50px; /* Ajuste conforme a altura da sua imagem */
-        background-size: cover; /* Ou 'contain' dependendo de como você quer que a imagem se ajuste */
-        margin-left: 8px;
-        margin-top: -20px;
+      h1{
+      color: #FF3C5F; 
+      font-size: 45px;
+      font-weight: bold; 
+      margin-top: 30px; 
       }
+      p{
+      font-family: 'CodecPro', sans-serif;
+      align-items: left;
+      font-weight: bold;
+      margin-left: -150px;
+      color: #ffffff; 
+      font-size: 20px;
+      margin-top: 50px; 
+      }
+  
+      .section-content {
+        padding: 10px;
+        border-radius: 8px;
+  
+        h2 {
+            text-align: center; 
+            font-family: 'CodecProExtraBold', sans-serif;
+            color: #9340FF; // Cor para os títulos das seções
+            font-size: 38px;
+            margin-bottom: -25px;
+        }
+  
+        p {
+            margin-left: 30px;
+            margin-right: 30px;
+            font-family: 'CodecPro', sans-serif;
+            text-align: justify;
+          font-size: 20px;
+          line-height: 1.6; // Espaçamento entre linhas para melhor leitura
+        }
+  
+        img {
+          width: 100%; // Assegura que a imagem preencha a largura da seção
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    //Rodapé
       .linha {
         margin-left: 8px;
         margin-top: 40px; 
@@ -441,7 +288,7 @@ ion-content {
       .social-media-container {
         position: absolute; /* Mantém o posicionamento absoluto */
         right: 40px; /* Alinha ao lado direito com 20px de margem do lado direito */
-        top: 1510px; /* Alinha verticalmente ao centro do footer */
+        top: 2925px !important; /* Alinha verticalmente ao centro do footer */
         transform: translateY(-50%); /* Ajusta precisamente ao centro */
         display: flex;
         flex-direction: column;
@@ -468,6 +315,7 @@ ion-content {
         text-align: center;
         margin-top: 20px;
     }
-
+    
   }
+
   

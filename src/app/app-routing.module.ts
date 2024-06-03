@@ -29,12 +29,13 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
-  },
-  {
-    path: 'perfil',
     loadChildren: () => import('./view/pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+  {
+    path: 'function',
+    loadChildren: () => import('./view/pages/function/function.module').then( m => m.FunctionPageModule)
+  }
+  
 ];
 
 @NgModule({

@@ -56,26 +56,26 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content style="--background: #101728;" class="gallery-section">
-    <h1>Galeria</h1>
-
-    <p>Imagens Melhoradas</p>
-    <div class="images-container">
-      <div *ngFor="let image of enhancedImages; let i = index" class="image-box">
-        <img *ngIf="i < enhancedLimit" [src]="image.src" alt="Imagem melhorada">
-        <div *ngIf="i === 5 && showDotse" class="dots" (click)="showMoreEnhancedImages()">•••</div>
+  <ion-content>
+    <div class="info-section">
+      <h1>Como Funciona</h1>
+      <div class="section-content">
+        <img src="./assets/imgs/transicao.gif" alt="Exemplo de imagem" style="border-radius: 7%; height: 200px; width: 200px;"> 
+        <h2>Imagens de Familiares</h2>
+        <p>A ImageWizard oferece a possibilidade de restaurar a imagem de pessoas que já não estão entre nós, para isso, alguns usuários que contém fotos antigas, utilizam nossa ferramenta para poder visualizar melhor o rosto de seus entes queridos. </p>
+        <img src="./assets/imgs/voduda.png" alt="Exemplo de imagem" style="height: 200px; width: 350px;">
+      </div>
+      <div class="section-content">
+        <h2>Personalidades Históricas</h2>
+        <p>Nossa sistema também consegue fazer a restauração em fotos de personagens históricos, que muitas vezes tem uma foto ou pintura muito antiga, com muitos ruídos, desta forma, conseguimos refatorar estas imagens, para visualizar com uma melhor qualidade o rosto destas personalidades que conhecemos.</p>
+        <img src="./assets/imgs/historico.png" alt="Exemplo de imagem" style="height: 200px; width: 350px;">
+      </div>
+      <div class="section-content">
+        <h2>Visualização em Câmeras de Segurança</h2>
+        <p>O ImageWizardAI melhora a clareza de imagens de câmeras de segurança, que muitas vezes apresentam baixa resolução e perda de detalhes importantes. Com nossa tecnologia, é possível aprimorar a visibilidade e detalhes dos rostos capturados, aumentando a qualidade das filmagens. Isso torna o reconhecimento facial mais confiável e a análise de vídeos mais eficiente para agências de segurança e operadores de sistemas de monitoramento.</p>
+        <img src="./assets/imgs/ladrao.png" alt="Exemplo de imagem" style="height: 200px; width: 350px;">
       </div>
     </div>
-
-    <p>Imagens Carregadas</p>
-    <div class="images-container">
-      <div *ngFor="let image of uploadedImages; let i = index" class="image-box">
-        <img *ngIf="i < uploadedLimit" [src]="image.src" alt="Imagem melhorada">
-        <div *ngIf="i === 2 && showDotsu" class="dots" (click)="showMoreUploadedImages()">•••</div>
-      </div>
-    </div>
-
-    <div style="margin-top: 20px;"></div>
 
     <div class="linha">
       <img src="./assets/imgs/linha_abstrata.png">
@@ -105,5 +105,5 @@
       </div>
 
       <div></div>
-
   </ion-content>
+</div>

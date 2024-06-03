@@ -1,13 +1,131 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>perfil</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="main-content" side="start" type="overlay" class="menus">
+  <ion-content>
+    <div class="menu-header">
+      <ion-icon name="person-circle-outline" class="profile-picture"></ion-icon>
+      <div class="user-info">
+        <h2>Sandro Eduardo Prado Volski</h2>
+        <p>sandroeduvolski&#64;gmail.com</p>
+      </div>
+    </div>
+    <ion-list lines="none">
+      <ion-item button (click)="navigateTo('/gallery')">
+        <ion-label>Ir para Galeria</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+      <ion-item button>
+        <ion-label>Como Funciona</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+      <ion-item button>
+        <ion-label>Perfil</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <div class="menu-header" style="margin-top: 400px;"></div>
+    <div class="menu-rodape">
+      <ion-icon name="globe-outline" slot="start"></ion-icon>
+      <ion-select interface="popover" placeholder="Selecione o Idioma" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
+        <ion-select-option value="Português do Brasil">Português do Brasil</ion-select-option>
+        <ion-select-option value="English (US)">English (US)</ion-select-option>
+        <ion-select-option value="Español (España)">Español (España)</ion-select-option>
+      </ion-select>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">perfil</ion-title>
+      <div class="toggle-container">
+        <ion-icon name="{{ darkModeEnabled ? 'moon' : 'sunny' }}"></ion-icon>
+        <span>{{ darkModeEnabled ? 'Modo Noturno' : 'Modo Claro' }}</span>
+        <ion-toggle [(ngModel)]="darkModeEnabled" (ionChange)="toggleDarkMode()"></ion-toggle>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header >
+    <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false" style="height: 80px; margin-left: 20px; font-size: 50px;"></ion-menu-button>
+      </ion-buttons>
+      <ion-title (click)="navigateTo('/home')">
+        <img src="./assets/imgs/logoCerta.png" alt="Logo" style="height: 120px; margin-top: 30px;">
+      </ion-title>
+      
     </ion-toolbar>
   </ion-header>
-</ion-content>
+
+  <ion-content style="--background: #101728;" >
+    <div class="profile-header">
+      <div class="user-info2">
+        <h2 style="color: #9340FF;">Sandro Eduardo</h2>
+        <p>sandroeduvolskigmail.com</p>
+      </div>
+      
+      <div class="user-photo"><!-- (click)="fileInput.click()" -->
+        <img src="./assets/imgs/FotoMinha.png" alt="User Photo">
+        <div class="edit-icon">
+          <ion-icon name="camera"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forms -->
+    <div class="formulario">
+      <div class="input-container">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" value="sandroeduvolski@gmail.com" readonly></ion-input>
+        </ion-item>
+      </div>
+    
+      <div class="input-container">
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text" value="Sandro Eduardo Prado Volski"></ion-input>
+        </ion-item>
+      </div>
+    
+      <div class="input-container">
+        <ion-item>
+          <ion-label position="floating">Alterar Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="userPassword"></ion-input>
+          <ion-icon name="eye-outline" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
+    <div style="margin-bottom: 30px !important;"></div>
+    <div class="settings-container">
+      <h2>Pré Definições</h2>
+      <div class="setting">
+        <p>Idioma</p>
+        <ion-radio-group [(ngModel)]="selectedLanguage">
+          <ion-item lines="none">
+            <ion-label>Português/Brasil</ion-label>
+            <ion-radio slot="start" value="pt-BR"></ion-radio>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>Inglês</ion-label>
+            <ion-radio slot="start" value="en"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+      <div class="setting">
+        <p>Tema</p>
+        <ion-radio-group [(ngModel)]="selectedTheme">
+          <ion-item lines="none">
+            <ion-label>Noite</ion-label>
+            <ion-radio slot="start" value="dark"></ion-radio>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>Dia</ion-label>
+            <ion-radio slot="start" value="light"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <ion-button class="salvar" expand="block" (click)="saveSettings()">Salvar</ion-button>
+      <ion-button expand="block" color="danger" (click)="logout()">Deslogar</ion-button>
+    </div>
+    
+  </ion-content>
+</div>

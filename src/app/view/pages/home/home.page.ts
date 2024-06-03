@@ -6,10 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements AfterViewInit {
-  @ViewChild('slider') slider!: ElementRef<HTMLDivElement>;
-  @ViewChild('sliderContainer') sliderContainer!: ElementRef<HTMLDivElement>;
-  @ViewChild('imageTop') imageTop!: ElementRef<HTMLImageElement>;
+export class HomePage implements AfterViewInit{
+  @ViewChild('slider') slider: ElementRef;
+  @ViewChild('sliderContainer') sliderContainer: ElementRef;
   public darkModeEnabled = true;
   sliderActive = false;
   sliderPosition = 0;
@@ -17,6 +16,33 @@ export class HomePage implements AfterViewInit {
   userName = 'Sandro Eduardo Prado Volski';
   userEmail = 'sandroeduvolski@gmail.com';
 
+  ngAfterViewInit() {
+    const slider = this.slider.nativeElement;
+    const sliderContainer = this.sliderContainer.nativeElement;
+    
+    let startX: number;
+    let startWidth: number;
+
+    slider.addEventListener('mousedown', (event: MouseEvent) => {
+      startX = event.clientX;
+      startWidth = sliderContainer.offsetWidth;
+
+      const onMouseMove = (event: MouseEvent) => {
+        const currentX = event.clientX;
+        const diffX = currentX - startX;
+        sliderContainer.style.width = `${startWidth + diffX}px`;
+      };
+
+      const onMouseUp = () => {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      };
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    });
+  }
+  
   constructor(private router: Router) {
     document.body.classList.add('dark-mode');
   }
@@ -25,7 +51,7 @@ export class HomePage implements AfterViewInit {
     this.router.navigateByUrl(path);
   }
 
-  ngAfterViewInit() {
+  /*ngAfterViewInit() {
     this.setupSlider();
   }
 
@@ -72,7 +98,7 @@ export class HomePage implements AfterViewInit {
     if (this.sliderPosition > this.sliderContainer.nativeElement.offsetWidth) {
       this.sliderPosition = this.sliderContainer.nativeElement.offsetWidth;
     }
-  }
+  }*/
 
   public selectedLanguage: string = "Português do Brasil";
   updateLanguage() {
