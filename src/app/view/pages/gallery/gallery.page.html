@@ -9,30 +9,29 @@
     </div>
     <ion-list lines="none">
       <ion-item button (click)="navigateTo('/gallery')">
-        <ion-label>Ir para Galeria</ion-label>
+        <ion-label>{{ 'GALLERY' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
       <ion-item button (click)="navigateTo('/function')">
-        <ion-label>Como Funciona</ion-label>
+        <ion-label>{{ 'HOW_IT_WORKS' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
       <ion-item button (click)="navigateTo('/perfil')">
-        <ion-label>Perfil</ion-label>
+        <ion-label>{{ 'PROFILE' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
     </ion-list>
     <div class="menu-header" style="margin-top: 400px;"></div>
     <div class="menu-rodape">
       <ion-icon name="globe-outline" slot="start"></ion-icon>
-      <ion-select interface="popover" placeholder="Selecione o Idioma" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
+      <ion-select interface="popover" placeholder="{{ 'SELECT_LANGUAGE' | translate }}" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
         <ion-select-option value="Português do Brasil">Português do Brasil</ion-select-option>
         <ion-select-option value="English (US)">English (US)</ion-select-option>
-        <ion-select-option value="Español (España)">Español (España)</ion-select-option>
       </ion-select>
 
       <div class="toggle-container">
         <ion-icon name="{{ darkModeEnabled ? 'moon' : 'sunny' }}"></ion-icon>
-        <span>{{ darkModeEnabled ? 'Modo Noturno' : 'Modo Claro' }}</span>
+        <span>{{ darkModeEnabled ? ('DARK_MODE' | translate) : ('LIGHT_MODE' | translate) }}</span>
         <ion-toggle [(ngModel)]="darkModeEnabled" (ionChange)="toggleDarkMode()"></ion-toggle>
       </div>
     </div>
@@ -40,7 +39,7 @@
 </ion-menu>
 
 <div class="ion-page" id="main-content">
-  <ion-header >
+  <ion-header>
     <ion-toolbar color="dark">
       <ion-buttons slot="start">
         <ion-menu-button auto-hide="false" style="height: 80px; margin-left: 20px; font-size: 50px;"></ion-menu-button>
@@ -57,9 +56,9 @@
   </ion-header>
 
   <ion-content style="--background: #101728;" class="gallery-section">
-    <h1>Galeria</h1>
+    <h1>{{ 'GALLERY_TITLE' | translate }}</h1>
 
-    <p>Imagens Melhoradas</p>
+    <p>{{ 'ENHANCED_IMAGES' | translate }}</p>
     <div class="images-container">
       <div *ngFor="let image of enhancedImages; let i = index" class="image-box">
         <img *ngIf="i < enhancedLimit" [src]="image.src" alt="Imagem melhorada">
@@ -67,7 +66,7 @@
       </div>
     </div>
 
-    <p>Imagens Carregadas</p>
+    <p>{{ 'UPLOADED_IMAGES' | translate }}</p>
     <div class="images-container">
       <div *ngFor="let image of uploadedImages; let i = index" class="image-box">
         <img *ngIf="i < uploadedLimit" [src]="image.src" alt="Imagem melhorada">
@@ -83,27 +82,27 @@
 
     <div></div>
 
-      <div class="footer-container">
-          <img src="./assets/imgs/logo_nome_rodape.png" alt="Logo" width="400" style="margin-left: 15px;">
-          <p class="faleConosco">Fale conosco</p>
-          <p class="info1">(42) 99800-5326</p>
-          <p class="info3">Rua Rodolfo Schulmberger, 26, Irati-PR, Brasil</p>
-          <p class="info4" >contato&#64;imagewizard.com.br</p>
-          <div style="margin: 20px;"></div>
-          <div class="legal-links">
-              <p class="info2">Termos de Serviço</p>
-              <p class="info5" href="#">Termos e Condições Gerais</p>
-              <p class="info6" href="#">Política de Privacidade</p>
-              <p class="info7" href="#">Política de cookies</p>
-              <p class="info8" href="#">Nota Legal</p>
-          </div>
-          <div class="social-media-container">
-            <ion-icon name="logo-instagram" class="social-media"></ion-icon>
-            <ion-icon name="logo-facebook" class="social-media"></ion-icon>
-            <ion-icon name="logo-linkedin" class="social-media"></ion-icon>
-          </div>
+    <div class="footer-container">
+      <img src="./assets/imgs/logo_nome_rodape.png" alt="Logo" width="400" style="margin-left: 15px;">
+      <p class="faleConosco">{{ 'CONTACT_US' | translate }}</p>
+      <p class="info1">{{ 'CONTACT_PHONE' | translate }}</p>
+      <p class="info3">{{ 'CONTACT_ADDRESS' | translate }}</p>
+      <p class="info4">{{ 'CONTACT_EMAIL' | translate }}</p>
+      <div style="margin: 20px;"></div>
+      <div class="legal-links">
+        <p class="info2">{{ 'TERMS_OF_SERVICE' | translate }}</p>
+        <p class="info5">{{ 'GENERAL_TERMS_CONDITIONS' | translate }}</p>
+        <p class="info6">{{ 'PRIVACY_POLICY' | translate }}</p>
+        <p class="info7">{{ 'COOKIE_POLICY' | translate }}</p>
+        <p class="info8">{{ 'LEGAL_NOTICE' | translate }}</p>
       </div>
+      <div class="social-media-container">
+        <ion-icon name="logo-instagram" class="social-media"></ion-icon>
+        <ion-icon name="logo-facebook" class="social-media"></ion-icon>
+        <ion-icon name="logo-linkedin" class="social-media"></ion-icon>
+      </div>
+    </div>
 
-      <div></div>
-
+    <div></div>
   </ion-content>
+</div>

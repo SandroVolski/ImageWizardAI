@@ -188,100 +188,110 @@ ion-toggle {
 
 .formulario {
   .input-container {
-    margin: 20px 28px; // Espaçamento ao redor de cada contêiner de entrada
-    padding: 10px; // Espaço interno
-    border: 2px solid #ffffff; // Bordas brancas
-    border-radius: 10px; // Cantos arredondados
-    background-color: #101728; // Cor de fundo
+    margin: 20px 28px;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: #101728;
 
     ion-item {
-      --background: #101728; // Fundo do item
-      --color: #ffffff; // Cor do texto
-      --placeholder-color: #cccccc; // Cor do placeholder
-      --border-color: transparent; // Sem borda
+      --background: #101728;
+      --color: #ffffff;
+      --placeholder-color: #cccccc;
+      --border-color: transparent;
+      display: flex; // Use flexbox for better alignment
+      width: calc(100% - 40px); // Adjust width to avoid overflow
 
-      display: block; // Garante que o ion-item preencha o contêiner
-      width: 100%; // Largura completa para estender-se até as bordas do contêiner
-    }
+      ion-label {
+        color: #ffffff;
+        font-size: 20px !important;
+      }
 
-    ion-label {
-      color: #ffffff;
-      font-size: 20px !important;
-    }
+      ion-input {
+        --color: #ffffff;
+        --placeholder-color: #cccccc;
+      }
 
-    ion-input {
-      --color: #ffffff; // Cor do texto do input
-      --placeholder-color: #cccccc; // Cor do placeholder do input
-    }
-
-    ion-icon {
-      color: #ffffff;
-      position: absolute; // Posiciona o ícone no canto direito do item
-      right: 10px; // Distância da borda direita
-      top: 50%; // Centraliza verticalmente
-      transform: translateY(-50%); // Ajuste fino da centralização vertical
+      ion-icon {
+        color: #ffffff;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
   }
 }
 
-.settings-container { 
+.settings-container {
   color: #fff;
+
   h2 {
     color: #9340FF;
     font-family: 'CodecProExtraBold', sans-serif;
     text-align: center;
   }
+
   .setting {
     font-family: 'CodecPro', sans-serif;
     margin-left: 35px;
+    margin-bottom: 20px;
+
     p {
       font-family: 'CodecProExtraBold', sans-serif;
       font-size: 18px;
       color: #fff;
     }
+
     ion-radio-group {
-      display: flex; 
-      align-items: center; 
+      .radio-group {
+        display: flex;  // Coloca as opções lado a lado
+        align-items: center;
+      }
 
       ion-item {
         --color: #fff;
         border-radius: 10px;
         padding: 10px;
         margin-right: 10px;
+        display: flex;
+        align-items: center;
 
         ion-label {
           font-size: 18px !important;
           margin-left: 10px;
+          color: #fff; // Garante que o texto esteja branco
         }
+
         ion-radio {
-          --background: #fff;  // Fundo branco inicial
-          --background-checked: #9340FF !important;  // Fundo muda para #9340FF quando marcado
-          --color-checked: #9340FF !important;  // Sem check padrão do Ionic
-          --color: #9340FF;  // Sem cor interna padrão
-          border: 2px solid #fff;  // Bordas brancas
+          --background: #fff; // Fundo branco inicial
+          --background-checked: #9340FF !important; // Fundo muda para #9340FF quando marcado
+          --color-checked: #ffffff !important; // Sem check padrão do Ionic
+          --color: #9340FF; // Sem cor interna padrão
+          border: 2px solid #fff; // Bordas brancas
           border-radius: 50%;
           width: 25px;
           height: 25px;
           position: relative;
-          margin-right: 15px;
+          margin-right: 5px;
         }
-        
+
         ion-radio::after {
           content: '';
           position: absolute;
-          width: 21px;  // Tamanho menor para o círculo interno
+          width: 21px; // Tamanho menor para o círculo interno
           height: 21px;
           border-radius: 50%;
-
         }
-        
+
         ion-radio:checked::after {
-          background-color: #ffffff;  // Cor quando selecionado
+          background-color: #ffffff; // Cor quando selecionado
         }
       }
     }
   }
 }
+
 
 .button-group {
   font-family: 'CodecProExtraBold', sans-serif;

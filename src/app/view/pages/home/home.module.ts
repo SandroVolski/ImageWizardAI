@@ -8,14 +8,20 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
+import { SafeHtmlPipe } from '../../../safe-html.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    RouterModule.forChild([{ path: '', component: HomePage }]),
+    TranslateModule
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [HomePage]
+  declarations: [HomePage, SafeHtmlPipe],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePageModule {}

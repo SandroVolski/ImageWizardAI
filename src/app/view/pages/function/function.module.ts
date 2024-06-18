@@ -8,13 +8,17 @@ import { FunctionPageRoutingModule } from './function-routing.module';
 
 import { FunctionPage } from './function.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { SafeHtmlPipe } from '../../../safe-html.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FunctionPageRoutingModule
+    FunctionPageRoutingModule,
+    TranslateModule
   ],
-  declarations: [FunctionPage]
+  declarations: [FunctionPage, SafeHtmlPipe]
 })
 export class FunctionPageModule {}

@@ -198,7 +198,7 @@ ion-content {
         }
       }
       
-      .upload-area {
+      /*.upload-area {
         background: #3F5A9D; // Cor de fundo sólida para o quadrado
         border: 2px dashed #ffffff; // Borda pontilhada branca
         border-radius: 10px; // Cantos arredondados
@@ -211,7 +211,86 @@ ion-content {
         align-items: center;
         position: relative; // Isso assegura que o conteúdo fique acima do gradiente
         z-index: 1; // Isso assegura que o conteúdo fique acima do gradiente
-        margin-top: -40px;;
+        margin-top: -40px;
+      }*/
+
+
+
+      .upload-area {
+        background: #3F5A9D; /* Cor de fundo sólida para o quadrado */
+        border: 2px dashed #ffffff; /* Borda pontilhada branca */
+        border-radius: 10px; /* Cantos arredondados */
+        color: #ffffff; /* Cor do texto */
+        text-align: center; /* Centraliza o texto */
+        padding: 75px; /* Espaçamento interno */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative; /* Isso assegura que o conteúdo fique acima do gradiente */
+        z-index: 1; /* Isso assegura que o conteúdo fique acima do gradiente */
+        margin-top: -40px;
+        width: 300px; /* Tamanho fixo para a largura */
+        height: 300px; /* Tamanho fixo para a altura */
+        box-sizing: border-box; /* Inclui bordas e padding no tamanho total */
+      }
+      
+      .preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Garante que a imagem ocupe todo o espaço sem distorcer */
+        border-radius: 10px; /* Correspondente ao .upload-area para cantos arredondados */
+        position: absolute; /* Permite que a imagem ocupe todo o espaço do contêiner */
+        top: 0;
+        left: 0;
+      }
+
+      .download-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 2;
+      }
+      
+      .download-button ion-icon {
+        font-size: 30px;
+        color: #3F5A9D;
+      }
+
+      .upload-area input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .loading-spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+      
+      .spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
       
       .instrucoes {
@@ -250,6 +329,20 @@ ion-content {
         outline: none; 
         z-index: 1;
       }
+
+    .select-button {
+      font-family: 'CodecProExtraBold', sans-serif;
+      background: linear-gradient(to right, #9340FF, #9340FF, #FFFFFF);
+      border: none; 
+      color: #ffffff; 
+      padding: 15px 56px;
+      font-size: 16px; /* Tamanho do texto */
+      border-radius: 12px; /* Bordas arredondadas */
+      cursor: pointer; /* Cursor de clique */
+      outline: none; 
+      z-index: 1;
+    }
+
     .button-class {
         margin-top: -50px;
         display: flex; /* Usa flexbox */
@@ -455,6 +548,7 @@ ion-content {
           margin: 5px 0; /* Aumenta o espaçamento vertical entre os ícones */
       }
 
+
       .footer-container {
         display: flex;
         flex-direction: column;
@@ -506,33 +600,49 @@ ion-content {
 
 
     .before-after-container {
-      margin-top: 25px;
-      width: 500px; /* Largura da imagem */
-      height: auto; /* Para manter a proporção */
+      position: relative;
+      width: 80%;
+      height: 400px; /* Ajuste conforme necessário */
+      margin-right: 40px;
+      margin-left: 40px;
       overflow: hidden;
     }
     
-    .before-image, .after-image {
-      margin-left: 68px;
-      width: 60%;
-      height: 60%;
+    .before-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
     }
     
     .after-image {
-      width: 50%; /* Iniciar no meio */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; /* Manter a largura completa */
+      height: 100%;
       background-size: cover;
       background-position: center;
+      z-index: 2;
+      clip-path: inset(0 50% 0 0); /* Inicialmente revela metade da imagem "depois" */
+      transition: clip-path 0.3s ease;
     }
     
     .slider {
-      position:absolute;
-      left: 50%; /* Inicia ao centro */
-      height: 35%;
-      width: 2px; /* Espessura da linha */
+      position: absolute;
+      top: 0;
+      left: 50%; /* Inicialmente posiciona o slider no meio */
+      width: 5px; /* Largura da linha branca */
+      height: 100%;
       background-color: white;
       cursor: ew-resize;
-      margin-top: 690px;
+      z-index: 3;
     }
+    
+    
 
   }
 

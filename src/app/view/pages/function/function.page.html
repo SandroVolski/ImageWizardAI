@@ -9,30 +9,29 @@
     </div>
     <ion-list lines="none">
       <ion-item button (click)="navigateTo('/gallery')">
-        <ion-label>Ir para Galeria</ion-label>
+        <ion-label>{{ 'GALLERY' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
       <ion-item button (click)="navigateTo('/function')">
-        <ion-label>Como Funciona</ion-label>
+        <ion-label>{{ 'HOW_IT_WORKS' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
       <ion-item button (click)="navigateTo('/perfil')">
-        <ion-label>Perfil</ion-label>
+        <ion-label>{{ 'PROFILE' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
     </ion-list>
     <div class="menu-header" style="margin-top: 400px;"></div>
     <div class="menu-rodape">
       <ion-icon name="globe-outline" slot="start"></ion-icon>
-      <ion-select interface="popover" placeholder="Selecione o Idioma" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
+      <ion-select interface="popover" placeholder="{{ 'SELECT_LANGUAGE' | translate }}" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
         <ion-select-option value="Português do Brasil">Português do Brasil</ion-select-option>
         <ion-select-option value="English (US)">English (US)</ion-select-option>
-        <ion-select-option value="Español (España)">Español (España)</ion-select-option>
       </ion-select>
 
       <div class="toggle-container">
         <ion-icon name="{{ darkModeEnabled ? 'moon' : 'sunny' }}"></ion-icon>
-        <span>{{ darkModeEnabled ? 'Modo Noturno' : 'Modo Claro' }}</span>
+        <span>{{ darkModeEnabled ? ('DARK_MODE' | translate) : ('LIGHT_MODE' | translate) }}</span>
         <ion-toggle [(ngModel)]="darkModeEnabled" (ionChange)="toggleDarkMode()"></ion-toggle>
       </div>
     </div>
@@ -58,21 +57,21 @@
 
   <ion-content>
     <div class="info-section">
-      <h1>Como Funciona</h1>
+      <h1>{{ 'HOW_IT_WORKS_TITLE' | translate }}</h1>
       <div class="section-content">
         <img src="./assets/imgs/transicao.gif" alt="Exemplo de imagem" style="border-radius: 7%; height: 200px; width: 200px;"> 
-        <h2>Imagens de Familiares</h2>
-        <p>A ImageWizard oferece a possibilidade de restaurar a imagem de pessoas que já não estão entre nós, para isso, alguns usuários que contém fotos antigas, utilizam nossa ferramenta para poder visualizar melhor o rosto de seus entes queridos. </p>
+        <h2>{{ 'FAMILY_IMAGES' | translate }}</h2>
+        <p>{{ 'FAMILY_DESCRIPTION' | translate }}</p>
         <img src="./assets/imgs/voduda.png" alt="Exemplo de imagem" style="height: 200px; width: 350px;">
       </div>
       <div class="section-content">
-        <h2>Personalidades Históricas</h2>
-        <p>Nossa sistema também consegue fazer a restauração em fotos de personagens históricos, que muitas vezes tem uma foto ou pintura muito antiga, com muitos ruídos, desta forma, conseguimos refatorar estas imagens, para visualizar com uma melhor qualidade o rosto destas personalidades que conhecemos.</p>
+        <h2>{{ 'HISTORICAL_FIGURES' | translate }}</h2>
+        <p>{{ 'HISTORICAL_DESCRIPTION' | translate }}</p>
         <img src="./assets/imgs/historico.png" alt="Exemplo de imagem" style="height: 200px; width: 350px;">
       </div>
       <div class="section-content">
-        <h2>Visualização em Câmeras de Segurança</h2>
-        <p>O ImageWizardAI melhora a clareza de imagens de câmeras de segurança, que muitas vezes apresentam baixa resolução e perda de detalhes importantes. Com nossa tecnologia, é possível aprimorar a visibilidade e detalhes dos rostos capturados, aumentando a qualidade das filmagens. Isso torna o reconhecimento facial mais confiável e a análise de vídeos mais eficiente para agências de segurança e operadores de sistemas de monitoramento.</p>
+        <h2>{{ 'SECURITY_CAMERA' | translate }}</h2>
+        <p>{{ 'SECURITY_DESCRIPTION' | translate }}</p>
         <img src="./assets/imgs/ladrao.png" alt="Exemplo de imagem" style="height: 200px; width: 350px;">
       </div>
     </div>
@@ -85,17 +84,17 @@
 
       <div class="footer-container">
           <img src="./assets/imgs/logo_nome_rodape.png" alt="Logo" width="400" style="margin-left: 15px;">
-          <p class="faleConosco">Fale conosco</p>
+          <p class="faleConosco">{{ 'CONTACT_US' | translate }}</p>
           <p class="info1">(42) 99800-5326</p>
           <p class="info3">Rua Rodolfo Schulmberger, 26, Irati-PR, Brasil</p>
           <p class="info4" >contato&#64;imagewizard.com.br</p>
           <div style="margin: 20px;"></div>
           <div class="legal-links">
-              <p class="info2">Termos de Serviço</p>
-              <p class="info5" href="#">Termos e Condições Gerais</p>
-              <p class="info6" href="#">Política de Privacidade</p>
-              <p class="info7" href="#">Política de cookies</p>
-              <p class="info8" href="#">Nota Legal</p>
+              <p class="info2">{{ 'TERMS_OF_SERVICE' | translate }}</p>
+              <p class="info5" href="#">{{ 'GENERAL_TERMS_CONDITIONS' | translate }}</p>
+              <p class="info6" href="#">{{ 'PRIVACY_POLICY' | translate }}</p>
+              <p class="info7" href="#">{{ 'COOKIE_POLICY' | translate }}</p>
+              <p class="info8" href="#">{{ 'LEGAL_NOTICE' | translate }}</p>
           </div>
           <div class="social-media-container">
             <ion-icon name="logo-instagram" class="social-media"></ion-icon>

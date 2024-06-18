@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
-
-export class PerfilPage {
+export class PerfilPage implements OnInit {
   selectedTheme: string = 'dark';
-  
+  selectedLanguage: string = 'pt';
+
   public darkModeEnabled = true;
-  constructor(private router: Router) {
+  constructor(private router: Router, private translate: TranslateService) {
     document.body.classList.add('dark-mode');
+    this.selectedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
+    this.translate.use(this.selectedLanguage);
   }
 
+  ngOnInit() {}
 
   saveSettings() {
-    // Implemente a lógica para salvar as configurações aqui
     console.log('Settings saved');
   }
 
   logout() {
-    // Implemente a lógica para deslogar aqui
     this.router.navigateByUrl('/home'); // Redireciona para a tela de home
     console.log('User logged out');
   }
@@ -30,10 +32,11 @@ export class PerfilPage {
   navigateTo(path: string) {
     this.router.navigateByUrl(path);
   }
-  public selectedLanguage: string = "Português do Brasil";
+
   updateLanguage() {
     console.log("Idioma selecionado:", this.selectedLanguage);
-    // Aqui você pode adicionar qualquer outra lógica que precise ser executada quando o idioma mudar
+    this.translate.use(this.selectedLanguage);
+    localStorage.setItem('selectedLanguage', this.selectedLanguage);
   }
 
   toggleDarkMode() {
@@ -50,5 +53,4 @@ export class PerfilPage {
       inputEl.type = this.passwordVisible ? 'text' : 'password';
     }
   }
-
 }

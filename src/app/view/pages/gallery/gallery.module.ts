@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { GalleryPageRoutingModule } from './gallery-routing.module';
 
 import { GalleryPage } from './gallery.page';
+import { TranslateModule } from '@ngx-translate/core';
+import { SafeHtmlPipe } from '../../../safe-html.pipe';
 
 
 @NgModule({
@@ -14,8 +16,9 @@ import { GalleryPage } from './gallery.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    GalleryPageRoutingModule
+    GalleryPageRoutingModule,
+    TranslateModule
   ],
-  declarations: [GalleryPage]
+  declarations: [GalleryPage, SafeHtmlPipe]
 })
 export class GalleryPageModule {}

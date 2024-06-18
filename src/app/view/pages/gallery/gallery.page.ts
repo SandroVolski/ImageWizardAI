@@ -1,8 +1,8 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ImageModalComponent } from 'src/app/components/image-modal/image-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
-@Component({  
+@Component({
   selector: 'app-gallery',
   templateUrl: './gallery.page.html',
   styleUrls: ['./gallery.page.scss'],
@@ -14,7 +14,6 @@ export class GalleryPage {
     { src: './assets/imgs/tests/the-beatles_01.png' },
     { src: './assets/imgs/tests/the-beatles_03.png' },
     { src: './assets/imgs/tests/walter (2)_00.png' },
-    //{ src: './assets/imgs/reticencias-fundo.png' }, //Reticencias
     { src: './assets/imgs/tests/paul_00.png' },
     { src: './assets/imgs/tests/the-beatles_00.png' },
     { src: './assets/imgs/tests/the-beatles_01.png' },
@@ -24,28 +23,34 @@ export class GalleryPage {
   uploadedImages = [
     { src: './assets/imgs/tests/paulori.png' },
     { src: './assets/imgs/tests/the-beatlesori.png' },
-    //{ src: './assets/imgs/reticencias-fundo.png' }, //Reticencias
     { src: './assets/imgs/tests/walterori.png' },
     { src: './assets/imgs/tests/paulori.png' },
     { src: './assets/imgs/tests/the-beatlesori.png' },
     { src: './assets/imgs/tests/walterori.png' },
   ];
-  hasMoreImages = true;
-
-
 
   public darkModeEnabled = true;
-  constructor(private router: Router) {
-    document.body.classList.add('dark-mode');
-   }
+  public selectedLanguage: string = "Português do Brasil";
 
-   navigateTo(path: string) {
+  constructor(private router: Router, private translate: TranslateService) {
+    document.body.classList.add('dark-mode');
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      this.selectedLanguage = savedLanguage;
+      this.translate.use(savedLanguage === 'English (US)' ? 'en' : 'pt');
+    } else {
+      this.translate.use('pt');
+    }
+  }
+
+  navigateTo(path: string) {
     this.router.navigateByUrl(path);
   }
-  public selectedLanguage: string = "Português do Brasil";
+
   updateLanguage() {
-    console.log("Idioma selecionado:", this.selectedLanguage);
-    // Aqui você pode adicionar qualquer outra lógica que precise ser executada quando o idioma mudar
+    const lang = this.selectedLanguage === "English (US)" ? 'en' : 'pt';
+    this.translate.use(lang);
+    localStorage.setItem('selectedLanguage', this.selectedLanguage);
   }
 
   toggleDarkMode() {
@@ -74,7 +79,7 @@ export class GalleryPage {
   }
 
   toggleMoreUploadedImages() {
-      this.showDotsu = !this.showDotsu; // Alterna a visibilidade do opaco
-      this.uploadedLimit = this.showDotsu ? this.uploadedImages.length : 3; // Ajusta o limite baseado na visibilidade
+    this.showDotsu = !this.showDotsu; // Alterna a visibilidade do opaco
+    this.uploadedLimit = this.showDotsu ? this.uploadedImages.length : 3; // Ajusta o limite baseado na visibilidade
   }
 }

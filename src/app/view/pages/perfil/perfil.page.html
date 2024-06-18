@@ -9,30 +9,29 @@
     </div>
     <ion-list lines="none">
       <ion-item button (click)="navigateTo('/gallery')">
-        <ion-label>Ir para Galeria</ion-label>
+        <ion-label>{{ 'GALLERY' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
       <ion-item button (click)="navigateTo('/function')">
-        <ion-label>Como Funciona</ion-label>
+        <ion-label>{{ 'HOW_IT_WORKS' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
       <ion-item button (click)="navigateTo('/perfil')">
-        <ion-label>Perfil</ion-label>
+        <ion-label>{{ 'PROFILE' | translate }}</ion-label>
         <ion-icon name="chevron-forward-outline" slot="end" class="seta"></ion-icon>
       </ion-item>
     </ion-list>
     <div class="menu-header" style="margin-top: 400px;"></div>
     <div class="menu-rodape">
       <ion-icon name="globe-outline" slot="start"></ion-icon>
-      <ion-select interface="popover" placeholder="Selecione o Idioma" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
-        <ion-select-option value="Português do Brasil">Português do Brasil</ion-select-option>
-        <ion-select-option value="English (US)">English (US)</ion-select-option>
-        <ion-select-option value="Español (España)">Español (España)</ion-select-option>
+      <ion-select interface="popover" placeholder="{{ 'SELECT_LANGUAGE' | translate }}" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
+        <ion-select-option value="pt">Português do Brasil</ion-select-option>
+        <ion-select-option value="en">English (US)</ion-select-option>
       </ion-select>
 
       <div class="toggle-container">
         <ion-icon name="{{ darkModeEnabled ? 'moon' : 'sunny' }}"></ion-icon>
-        <span>{{ darkModeEnabled ? 'Modo Noturno' : 'Modo Claro' }}</span>
+        <span>{{ darkModeEnabled ? ('DARK_MODE' | translate) : ('LIGHT_MODE' | translate) }}</span>
         <ion-toggle [(ngModel)]="darkModeEnabled" (ionChange)="toggleDarkMode()"></ion-toggle>
       </div>
     </div>
@@ -48,7 +47,6 @@
       <ion-title (click)="navigateTo('/home')">
         <img src="./assets/imgs/logoCerta.png" alt="Logo" style="height: 120px; margin-top: 30px;">
       </ion-title>
-      
     </ion-toolbar>
   </ion-header>
 
@@ -59,7 +57,7 @@
         <p>sandroeduvolskigmail.com</p>
       </div>
       
-      <div class="user-photo"><!-- (click)="fileInput.click()" -->
+      <div class="user-photo">
         <img src="./assets/imgs/FotoMinha.png" alt="User Photo">
         <div class="edit-icon">
           <ion-icon name="camera"></ion-icon>
@@ -71,21 +69,21 @@
     <div class="formulario">
       <div class="input-container">
         <ion-item>
-          <ion-label position="floating">Email</ion-label>
+          <ion-label position="floating">{{ 'EMAIL' | translate }}</ion-label>
           <ion-input type="email" value="sandroeduvolski@gmail.com" readonly></ion-input>
         </ion-item>
       </div>
     
       <div class="input-container">
         <ion-item>
-          <ion-label position="floating">Nome</ion-label>
+          <ion-label position="floating">{{ 'NAME' | translate }}</ion-label>
           <ion-input type="text" value="Sandro Eduardo Prado Volski"></ion-input>
         </ion-item>
       </div>
     
       <div class="input-container">
         <ion-item>
-          <ion-label position="floating">Alterar Senha</ion-label>
+          <ion-label position="floating">{{ 'CHANGE_PASSWORD' | translate }}</ion-label>
           <ion-input type="password" [(ngModel)]="userPassword"></ion-input>
           <ion-icon name="eye-outline" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
         </ion-item>
@@ -94,34 +92,42 @@
 
     <div style="margin-bottom: 30px !important;"></div>
     <div class="settings-container">
-      <h2>Pré Definições</h2>
+      <h2>{{ 'SETTINGS' | translate }}</h2>
       <div class="setting">
-        <p>Idioma</p>
-        <ion-radio-group [(ngModel)]="selectedLanguage">
-          <ion-item lines="none">
-            <ion-radio slot="start" value="pt-BR" aria-label="Português/Brasil">Português/Brasil</ion-radio>
-          </ion-item>
-          <ion-item lines="none">
-            <ion-radio slot="start" value="en" aria-label="Inglês">Inglês</ion-radio>
-          </ion-item>
+        <p>{{ 'LANGUAGE' | translate }}</p>
+        <ion-radio-group [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
+          <div class="radio-group">
+            <ion-item lines="none">
+              <ion-radio slot="start" value="pt" aria-label="Português/Brasil"></ion-radio>
+              <ion-label>Português/Brasil</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-radio slot="start" value="en" aria-label="Inglês"></ion-radio>
+              <ion-label>English</ion-label>
+            </ion-item>
+          </div>
         </ion-radio-group>
       </div>
       <div class="setting">
-        <p>Tema</p>
+        <p>{{ 'THEME' | translate }}</p>
         <ion-radio-group [(ngModel)]="selectedTheme">
-          <ion-item lines="none">
-            <ion-radio slot="start" value="dark" aria-label="Noite">Noite</ion-radio>
-          </ion-item>
-          <ion-item lines="none">
-            <ion-radio slot="start" value="light" aria-label="Dia">Dia</ion-radio>
-          </ion-item>
+          <div class="radio-group">
+            <ion-item lines="none">
+              <ion-radio slot="start" value="dark" aria-label="Noite"></ion-radio>
+              <ion-label>{{ 'NIGHT' | translate }}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-radio slot="start" value="light" aria-label="Dia"></ion-radio>
+              <ion-label>{{ 'DAY' | translate }}</ion-label>
+            </ion-item>
+          </div>
         </ion-radio-group>
       </div>
     </div>
     
     <div class="button-group">
-      <ion-button class="salvar" expand="block" (click)="saveSettings()">Salvar</ion-button>
-      <ion-button expand="block" color="danger" (click)="logout()">Deslogar</ion-button>
+      <ion-button class="salvar" expand="block" (click)="saveSettings()">{{ 'SAVE' | translate }}</ion-button>
+      <ion-button expand="block" color="danger" (click)="logout()">{{ 'LOGOUT' | translate }}</ion-button>
     </div>
     
   </ion-content>
