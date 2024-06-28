@@ -34,6 +34,14 @@ const routes: Routes = [
   {
     path: 'function',
     loadChildren: () => import('./view/pages/function/function.module').then( m => m.FunctionPageModule)
+  },
+  {
+    path: 'signin',
+    loadChildren: () => import('./view/users/signin/signin.module').then( m => m.SigninPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./view/users/signup/signup.module').then( m => m.SignupPageModule)
   }
   
 ];

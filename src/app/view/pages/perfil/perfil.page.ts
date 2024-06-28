@@ -13,10 +13,16 @@ export class PerfilPage implements OnInit {
 
   public darkModeEnabled = true;
   constructor(private router: Router, private translate: TranslateService) {
-    document.body.classList.add('dark-mode');
-    this.selectedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
-    this.translate.use(this.selectedLanguage);
+    this.translate.setDefaultLang('pt');
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      this.selectedLanguage = savedLanguage;
+      this.translate.use(savedLanguage);
+    } else {
+      this.translate.use('pt');
+    }
   }
+  
 
   ngOnInit() {}
 
@@ -25,7 +31,7 @@ export class PerfilPage implements OnInit {
   }
 
   logout() {
-    this.router.navigateByUrl('/home'); // Redireciona para a tela de home
+    this.router.navigateByUrl('/signin'); 
     console.log('User logged out');
   }
   
@@ -34,9 +40,9 @@ export class PerfilPage implements OnInit {
   }
 
   updateLanguage() {
-    console.log("Idioma selecionado:", this.selectedLanguage);
-    this.translate.use(this.selectedLanguage);
-    localStorage.setItem('selectedLanguage', this.selectedLanguage);
+    const lang = this.selectedLanguage;
+    this.translate.use(lang);
+    localStorage.setItem('selectedLanguage', lang);
   }
 
   toggleDarkMode() {

@@ -1,33 +1,53 @@
-<ion-content>
-  <img src="./assets/imgs/logo.png" alt="App logo" class="logo">
-  <div class="welcome-message">
-    <h1>Bem vindo!</h1>
-  </div>
+<div class="login-container">
+  <img src="./assets/imgs/logoCerta.png" alt="Logo" class="logo">
+  <h2>Bem vindo!</h2>
+  <form>
+    <div class="input-group">
+      <label for="email">Email</label>
+      <div class="input-container">
+        <ion-item>
+          <ion-input id="email" type="email" required></ion-input>
+        </ion-item>
+      </div>
+    </div>
 
-  <ion-card class="input-container">
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email"></ion-input>
-    </ion-item>
-  </ion-card>    
+    <div class="input-group">
+      <label for="password">Senha</label>
+      <div class="input-container">
+        <ion-item>
+          <ion-input id="password" [type]="passwordType" required></ion-input>
+          <ion-icon [name]="passwordIcon" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
 
-  <ion-card class="input-container">
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password"></ion-input>
+    <div class="options-container">
+      <ion-item lines="none">
+        <ion-checkbox slot="start" class="custom-checkbox"></ion-checkbox>
+        <ion-label>Lembrar-me</ion-label>
       </ion-item>
-    </ion-card-content>
-  </ion-card>
+      <a href="#" class="forgot-password">Esqueci minha senha</a>
+    </div>
 
+    <ion-button expand="full" class="login-button">Entrar</ion-button>
 
-  <ion-item>
-    <ion-label>Lembrar-me</ion-label>
-    <ion-toggle slot="end"></ion-toggle>
-  </ion-item>
+    <div class="register-container" (click)="navigateTo('/signup')">
+      <p>Não possui cadastro? <a class="register-link">CLIQUE AQUI</a></p>
+    </div>
 
+    <div class="social-login-container">
+      <div class="social-buttons">
+        <ion-button class="social-button google-button">
+          <ion-icon name="logo-google"></ion-icon>
+        </ion-button>
+        <ion-button class="social-button facebook-button">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
 
-  <ion-button expand="block" color="primary">Entrar</ion-button>
-  <p class="forgot-password">Esqueci minha senha</p>
-  <p class="register-text">Não possui cadastro? CLIQUE AQUI</p>
-</ion-content>
+    <div class="register-container" style="margin-top: 80px; font-size: 20px;" (click)="navigateTo('/home')">
+      <p>Sou um <a style="color: #6B95FF;">VISITANTE</a></p>
+    </div>
+  </form>
+</div>

@@ -10,7 +10,8 @@ import { HomePage } from './home.page';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
-import { SafeHtmlPipe } from '../../../safe-html.pipe';
+//import { SafeHtmlPipe } from '../../../safe-html.pipe';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
   imports: [
@@ -19,9 +20,10 @@ import { SafeHtmlPipe } from '../../../safe-html.pipe';
     IonicModule,
     HomePageRoutingModule,
     RouterModule.forChild([{ path: '', component: HomePage }]),
-    TranslateModule
+    SharedModule
+    //TranslateModule
   ],
-  declarations: [HomePage, SafeHtmlPipe],
+  declarations: [HomePage/*, SafeHtmlPipe*/],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePageModule {}

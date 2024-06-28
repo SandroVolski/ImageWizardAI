@@ -33,11 +33,11 @@ export class GalleryPage {
   public selectedLanguage: string = "Português do Brasil";
 
   constructor(private router: Router, private translate: TranslateService) {
-    document.body.classList.add('dark-mode');
+    this.translate.setDefaultLang('pt');
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
       this.selectedLanguage = savedLanguage;
-      this.translate.use(savedLanguage === 'English (US)' ? 'en' : 'pt');
+      this.translate.use(savedLanguage);
     } else {
       this.translate.use('pt');
     }
@@ -48,9 +48,9 @@ export class GalleryPage {
   }
 
   updateLanguage() {
-    const lang = this.selectedLanguage === "English (US)" ? 'en' : 'pt';
+    const lang = this.selectedLanguage;
     this.translate.use(lang);
-    localStorage.setItem('selectedLanguage', this.selectedLanguage);
+    localStorage.setItem('selectedLanguage', lang);
   }
 
   toggleDarkMode() {

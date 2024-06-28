@@ -7,13 +7,24 @@ import { Router } from '@angular/router';
   templateUrl: './signin.page.html',
   styleUrls: ['./signin.page.scss'],
 })
-export class SigninPage implements OnInit {
-  constructor() {
-    
-   }
+export class SigninPage{
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-outline';
 
-  ngOnInit() {
-    
+  constructor(private router: Router) {}
+
+  togglePasswordVisibility() {
+    if (this.passwordType === 'password') {
+      this.passwordType = 'text';
+      this.passwordIcon = 'eye-off-outline';
+    } else {
+      this.passwordType = 'password';
+      this.passwordIcon = 'eye-outline';
+    }
+  }
+
+  navigateTo(path: string) {
+    this.router.navigateByUrl(path);
   }
   
 }

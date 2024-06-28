@@ -28,7 +28,7 @@ export class HomePage implements OnInit, AfterViewInit {
   isLoading = false;
 
   // Atualize com o URL público do ngrok
-  restorationApiUrl = 'https://12ba-35-236-212-140.ngrok-free.app/restore';
+  restorationApiUrl = 'https://43b8-35-185-199-242.ngrok-free.app/restore';
 
   buttonTextKey = 'BUTTON_RESTORE';
   buttonClass = 'restore-button';
@@ -38,7 +38,7 @@ export class HomePage implements OnInit, AfterViewInit {
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
       this.selectedLanguage = savedLanguage;
-      this.translate.use(savedLanguage === 'English (US)' ? 'en' : 'pt');
+      this.translate.use(savedLanguage);
     } else {
       this.translate.use('pt');
     }
@@ -57,9 +57,9 @@ export class HomePage implements OnInit, AfterViewInit {
   }
 
   updateLanguage() {
-    const lang = this.selectedLanguage === "English (US)" ? 'en' : 'pt';
+    const lang = this.selectedLanguage;
     this.translate.use(lang);
-    localStorage.setItem('selectedLanguage', this.selectedLanguage);
+    localStorage.setItem('selectedLanguage', lang);
   }
 
   toggleDarkMode() {

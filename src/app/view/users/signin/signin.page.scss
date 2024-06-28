@@ -1,49 +1,154 @@
-ion-content {
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #101728;
   padding: 20px;
+  margin-top: -30px;
 
   .logo {
-    height: auto;
-    width: 220px;
+    width: 250px;
     margin-bottom: -20px;
-    margin-top: 30px;
-    margin-left: 100px;
   }
 
-  ion-item {
-    margin-bottom: 10px;
-  }
-
-  .forgot-password {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
-  }
-
-  .register-text {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #007aff;
-  }
-
-  .welcome-message {
+  h2 {
+    color: #ffffff;
+    font-family: 'CodecProExtraBold', sans-serif;
+    font-size: 30px;
     margin-bottom: 20px;
-    text-align: left;
-    margin-left: 20px;
+    text-align: left; // Alinhando à esquerda
+    align-self: flex-start; // Alinhando à esquerda
   }
 
-  .input-container {
-    width: 300px;
-    border-radius: 10px;
-    border-color: black;
-    height: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+  form {
+    width: 100%;
+    max-width: 400px;
 
-    ion-item {
-      margin-bottom: 10px;
+    .input-group {
+      margin-bottom: 20px;
+
+      label {
+        color: #ffffff;
+        font-family: 'CodecProExtraBold', sans-serif;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .input-container {
+        padding: 10px;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        background-color: #101728;
+
+        ion-item {
+          --background: transparent;
+          --color: #ffffff;
+          --placeholder-color: #cccccc;
+          --border-color: transparent;
+
+          display: block;
+          width: 100%;
+
+          ion-input {
+            --color: #ffffff;
+            --placeholder-color: #cccccc;
+          }
+
+          ion-icon {
+            color: #ffffff;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .options-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0;
+
+      ion-item {
+        --background: transparent;
+        --color: #ffffff;
+        display: flex; // Garantir que o item seja um contêiner flexível
+        align-items: center; // Alinhar itens centralizados
+        width: 100%;
+
+        ion-label {
+          font-size: 16px;
+          color: #ffffff;
+          white-space: nowrap;
+        }
+
+        .custom-checkbox {
+          --background: #ffffff;
+          --border-radius: 5px; // Arredondar os cantos do checkbox
+          --width: 20px;
+          --height: 20px;
+        }
+      }
+
+      .forgot-password {
+        color: #ff4c4c;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+    }
+
+    .login-button {
+      --background: #ffffff;
+      --color: #101728;
+      font-family: 'CodecProExtraBold', sans-serif;
+      margin: 20px 0;
+      border-radius: 10px; // Arredondar cantos do botão
+    }
+
+    .register-container {
+      color:#ffffff;
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'CodecProExtraBold', sans-serif;
+
+      .register-link {
+        color: #00ff00; // Cor branca
+      }
+    }
+
+    .social-login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .social-buttons {
+        display: flex;
+        gap: 20px; // Espaçamento entre os botões
+      }
+
+      .social-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%; // Fazer os botões circulares
+        font-family: 'CodecProExtraBold', sans-serif;
+        ion-icon {
+          font-size: 80px;
+        }
+      }
+
+      .google-button {
+        --background:#EA4335; // Degradê com cores do Google
+        color: #ffffff;
+      }
+
+      .facebook-button {
+        --background: #3b5998;
+        --color: #ffffff;
+      }
     }
   }
 }

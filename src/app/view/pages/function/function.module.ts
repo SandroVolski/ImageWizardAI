@@ -9,7 +9,8 @@ import { FunctionPageRoutingModule } from './function-routing.module';
 import { FunctionPage } from './function.page';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { SafeHtmlPipe } from '../../../safe-html.pipe';
+//import { SafeHtmlPipe } from '../../../safe-html.pipe';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
   imports: [
@@ -17,8 +18,8 @@ import { SafeHtmlPipe } from '../../../safe-html.pipe';
     FormsModule,
     IonicModule,
     FunctionPageRoutingModule,
-    TranslateModule
+    SharedModule
   ],
-  declarations: [FunctionPage, SafeHtmlPipe]
+  declarations: [FunctionPage/*, SafeHtmlPipe*/]
 })
 export class FunctionPageModule {}

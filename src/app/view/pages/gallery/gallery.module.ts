@@ -8,7 +8,8 @@ import { GalleryPageRoutingModule } from './gallery-routing.module';
 
 import { GalleryPage } from './gallery.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { SafeHtmlPipe } from '../../../safe-html.pipe';
+//import { SafeHtmlPipe } from '../../../safe-html.pipe';
+import { SharedModule } from 'src/app/shared.module';
 
 
 @NgModule({
@@ -17,8 +18,9 @@ import { SafeHtmlPipe } from '../../../safe-html.pipe';
     FormsModule,
     IonicModule,
     GalleryPageRoutingModule,
-    TranslateModule
+    SharedModule
+    //TranslateModule
   ],
-  declarations: [GalleryPage, SafeHtmlPipe]
+  declarations: [GalleryPage/*, SafeHtmlPipe*/]
 })
 export class GalleryPageModule {}

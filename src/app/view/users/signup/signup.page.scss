@@ -1,0 +1,106 @@
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #101728;
+    padding: 20px;
+  
+    .back-icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #ffffff;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  
+    .logo {
+      width: 250px;
+      margin-bottom: 20px;
+    }
+  
+    h2 {
+      color: #ffffff;
+      font-family: 'CodecProExtraBold', sans-serif;
+      font-size: 30px;
+      margin-bottom: 20px;
+      text-align: left;
+      align-self: flex-start;
+      margin-top: 0px;
+    }
+  
+    form {
+      width: 100%;
+      max-width: 400px;
+  
+      .input-group {
+        margin-bottom: 20px;
+  
+        label {
+          color: #ffffff;
+          font-family: 'CodecProExtraBold', sans-serif;
+          display: block;
+          margin-bottom: 5px;
+        }
+  
+        .input-container {
+          padding: 10px;
+          border: 2px solid #ffffff;
+          border-radius: 10px;
+          background-color: #101728;
+  
+          ion-item {
+            --background: transparent;
+            --color: #ffffff;
+            --placeholder-color: #cccccc;
+            --border-color: transparent;
+  
+            display: block;
+            width: 100%;
+  
+            ion-input {
+              --color: #ffffff;
+              --placeholder-color: #cccccc;
+            }
+  
+            ion-icon {
+              color: #ffffff;
+              cursor: pointer;
+            }
+          }
+  
+          .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+          
+            ul {
+              padding-left: 20px;
+              margin: 0;
+            }
+          
+            li {
+              list-style: none;
+            }
+          
+            small {
+              display: block;
+              margin-bottom: 2px;
+            }
+          }
+          
+        }
+      }
+    }
+    .signup-button {
+        --background: #ffffff;
+        --color: #101728;
+        font-family: 'CodecProExtraBold', sans-serif;
+        margin: 20px 0;
+        border-radius: 10px;
+        margin-top: 100px;
+      }
+  }
+  

@@ -25,8 +25,8 @@
     <div class="menu-rodape">
       <ion-icon name="globe-outline" slot="start"></ion-icon>
       <ion-select interface="popover" placeholder="{{ 'SELECT_LANGUAGE' | translate }}" [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
-        <ion-select-option value="pt">Português do Brasil</ion-select-option>
-        <ion-select-option value="en">English (US)</ion-select-option>
+        <ion-select-option value="pt">Português</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
       </ion-select>
 
       <div class="toggle-container">
@@ -98,8 +98,8 @@
         <ion-radio-group [(ngModel)]="selectedLanguage" (ionChange)="updateLanguage()">
           <div class="radio-group">
             <ion-item lines="none">
-              <ion-radio slot="start" value="pt" aria-label="Português/Brasil"></ion-radio>
-              <ion-label>Português/Brasil</ion-label>
+              <ion-radio slot="start" value="pt" aria-label="Português"></ion-radio>
+              <ion-label>Português</ion-label>
             </ion-item>
             <ion-item lines="none">
               <ion-radio slot="start" value="en" aria-label="Inglês"></ion-radio>

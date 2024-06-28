@@ -12,9 +12,13 @@ export class FunctionPage implements OnInit {
   public selectedLanguage: string = "Português do Brasil";
 
   constructor(private router: Router, private translate: TranslateService) {
-    document.body.classList.add('dark-mode');
-    this.selectedLanguage = localStorage.getItem('selectedLanguage') || 'Português do Brasil';
-    this.translate.use(this.selectedLanguage === "English (US)" ? 'en' : 'pt');
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      this.selectedLanguage = savedLanguage;
+      this.translate.use(savedLanguage);
+    } else {
+      this.translate.use('pt');
+    }
   }
 
   ngOnInit() {}
@@ -24,10 +28,9 @@ export class FunctionPage implements OnInit {
   }
 
   updateLanguage() {
-    console.log("Idioma selecionado:", this.selectedLanguage);
-    const languageCode = this.selectedLanguage === "English (US)" ? 'en' : 'pt';
-    this.translate.use(languageCode);
-    localStorage.setItem('selectedLanguage', this.selectedLanguage);
+    const lang = this.selectedLanguage;
+    this.translate.use(lang);
+    localStorage.setItem('selectedLanguage', lang);
   }
 
   toggleDarkMode() {

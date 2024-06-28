@@ -9,7 +9,8 @@ import { PerfilPageRoutingModule } from './perfil-routing.module';
 import { PerfilPage } from './perfil.page';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { SafeHtmlPipe } from '../../../safe-html.pipe';
+//import { SafeHtmlPipe } from '../../../safe-html.pipe';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
   imports: [
@@ -17,8 +18,9 @@ import { SafeHtmlPipe } from '../../../safe-html.pipe';
     FormsModule,
     IonicModule,
     PerfilPageRoutingModule,
-    TranslateModule
+    SharedModule
+    //TranslateModule
   ],
-  declarations: [PerfilPage, SafeHtmlPipe]
+  declarations: [PerfilPage/*, SafeHtmlPipe*/]
 })
 export class PerfilPageModule {}

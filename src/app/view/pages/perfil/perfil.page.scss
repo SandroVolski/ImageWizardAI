@@ -265,27 +265,34 @@ ion-toggle {
 
         ion-radio {
           --background: #fff; // Fundo branco inicial
-          --background-checked: #9340FF !important; // Fundo muda para #9340FF quando marcado
-          --color-checked: #ffffff !important; // Sem check padrão do Ionic
-          --color: #9340FF; // Sem cor interna padrão
-          border: 2px solid #fff; // Bordas brancas
+          --color: #9340FF !important; // Sem cor interna padrão
+          border: 2px solid #fff;
           border-radius: 50%;
           width: 25px;
           height: 25px;
           position: relative;
           margin-right: 5px;
+          
         }
 
-        ion-radio::after {
+        &:after {
           content: '';
           position: absolute;
-          width: 21px; // Tamanho menor para o círculo interno
-          height: 21px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 15px; // Tamanho do círculo interno
+          height: 15px;
           border-radius: 50%;
+          background-color: transparent;
         }
 
-        ion-radio:checked::after {
-          background-color: #ffffff; // Cor quando selecionado
+        &[aria-checked="true"]:after {
+          background-color: #9340FF; // Cor quando selecionado
+        }
+
+        &[aria-checked="true"] {
+          --background: #9340FF; // Fundo muda para #9340FF quando marcado
         }
       }
     }
