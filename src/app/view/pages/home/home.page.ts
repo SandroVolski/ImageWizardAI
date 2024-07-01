@@ -2,6 +2,9 @@ import { Component, ElementRef, ViewChild, OnInit, AfterViewInit, HostListener }
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import axios from 'axios';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -28,12 +31,12 @@ export class HomePage implements OnInit, AfterViewInit {
   isLoading = false;
 
   // Atualize com o URL público do ngrok
-  restorationApiUrl = 'https://43b8-35-185-199-242.ngrok-free.app/restore';
+  restorationApiUrl = 'https://1347-34-80-48-191.ngrok-free.app/restore';
 
   buttonTextKey = 'BUTTON_RESTORE';
   buttonClass = 'restore-button';
 
-  constructor(private router: Router, private translate: TranslateService) {
+  constructor(private router: Router, private translate: TranslateService, private storage: AngularFireStorage, private firestore: AngularFirestore) {
     this.translate.setDefaultLang('pt');
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
@@ -128,11 +131,32 @@ export class HomePage implements OnInit, AfterViewInit {
       return;
     }
 
-    const formData = new FormData();
-    formData.append('file', this.selectedFile);
+    // Primeiro, envie a imagem original para o Firebase
+    const filePath = `uploads/${Date.now()}_${this.selectedFile.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, this.selectedFile);
 
     this.isLoading = true;
     this.restoredImageUrl = null;
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
+          this.saveImageDetailsToFirestore(url, 'original');
+          this.callRestorationApi();
+        });
+      })
+    ).subscribe();
+  }
+
+  async callRestorationApi() {
+    if (!this.selectedFile) {
+      console.error('No file selected');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
 
     try {
       const response = await axios.post(this.restorationApiUrl, formData, {
@@ -150,11 +174,40 @@ export class HomePage implements OnInit, AfterViewInit {
       // Atualizar o texto e a classe do botão
       this.buttonTextKey = 'BUTTON_SELECT_ANOTHER';
       this.buttonClass = 'select-button';
+
+      // Enviar a imagem restaurada para o Firebase
+      this.uploadRestoredImageToFirebase(blob);
     } catch (error) {
       console.error('Error restoring image:', error);
     } finally {
       this.isLoading = false;
     }
+  }
+
+  uploadRestoredImageToFirebase(blob: Blob) {
+    const filePath = `restored/${Date.now()}_restored_image.png`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, blob);
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
+          this.saveImageDetailsToFirestore(url, 'restored');
+        });
+      })
+    ).subscribe();
+  }
+
+  saveImageDetailsToFirestore(downloadUrl: string, type: string) {
+    this.firestore.collection('images').add({
+      url: downloadUrl,
+      type: type,
+      timestamp: new Date()
+    }).then(() => {
+      console.log(`Image details (${type}) saved to Firestore`);
+    }).catch(error => {
+      console.error(`Error saving ${type} image details to Firestore`, error);
+    });
   }
 
   onRestoreButtonClick() {

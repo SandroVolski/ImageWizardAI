@@ -72,7 +72,7 @@
         </div>
         <img *ngIf="selectedFile && !isLoading && !restoredImageUrl" [src]="selectedImageUrl" alt="Selected Image" class="preview-image" />
         <img *ngIf="restoredImageUrl && !isLoading" [src]="restoredImageUrl" alt="Restored Image" class="preview-image" />
-
+    
         <!-- Botão de Download -->
         <button *ngIf="restoredImageUrl && !isLoading" (click)="downloadImage()" class="download-button">
           <ion-icon name="download-outline"></ion-icon>
